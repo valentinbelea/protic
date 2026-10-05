@@ -1,0 +1,22 @@
+@model DocumentPortal.Models.Document
+
+@{
+    ViewData["Title"] = Model.Description;
+}
+
+<div class="row justify-content-center mt-4">
+    <div class="col-md-10">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-primary text-secondary d-flex justify-content-between align-items-center">
+                <h4 class="mb-0"><i class="bi bi-file-text me-2"></i>@Model.Description</h4>
+                <a asp-action="Menu" asp-route-id="@Model.Section.MenuId" class="btn btn-sm btn-outline-dark">Închide / Back</a>
+            </div>
+            <div class="card-body bg-white p-5 rounded-bottom text-dark">
+                <div class="document-content fs-5" style="white-space: pre-wrap; font-family: Arial, Verdana, sans-serif;">@Model.Content</div>
+            </div>
+            <div class="card-footer text-muted bg-light text-end">
+                Adăugat la: @Model.UploadDate.ToString("f")
+            </div>
+        </div>
+    </div>
+</div>

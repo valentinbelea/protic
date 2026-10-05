@@ -1,0 +1,54 @@
+@model DocumentPortal.ViewModels.QuizResultViewModel
+@{
+    ViewData["Title"] = Localizer["Quiz Result"] + " - " + Model.Quiz.Title;
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            
+            <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                <div class="bg-primary text-white p-5">
+                    <h1 class="display-4"><i class="bi bi-trophy-fill text-warning"></i></h1>
+                    <h2 class="mt-3">@Localizer["Quiz Completed!"]</h2>
+                    <p class="lead mb-0 text-white-50">@Model.Quiz.Title</p>
+                </div>
+                
+                <div class="card-body p-5 bg-white">
+                    <h3 class="fw-bold mb-4">@Localizer["Your Score"]</h3>
+                    
+                    <div class="display-1 fw-bold @(Model.ScorePercentage >= 80 ? "text-success" : (Model.ScorePercentage >= 50 ? "text-warning" : "text-danger"))">
+                        @(Math.Round(Model.ScorePercentage))%
+                    </div>
+                    
+                    <p class="fs-5 mt-3 text-muted">
+                        @Localizer["You got"] <strong>@Model.CorrectAnswers</strong> @Localizer["out of"] <strong>@Model.TotalQuestions</strong> @Localizer["questions right."]
+                    </p>
+                    
+                    @if (Model.ScorePercentage == 100)
+                    {
+                        <div class="alert alert-success mt-4 rounded-pill">
+                            <i class="bi bi-star-fill me-2"></i> @Localizer["Perfect score! Outstanding job!"]
+                        </div>
+                    }
+                    else if (Model.ScorePercentage >= 80)
+                    {
+                        <div class="alert alert-info mt-4 rounded-pill">
+                            <i class="bi bi-emoji-smile-fill me-2"></i> @Localizer["Great job!"]
+                        </div>
+                    }
+                    
+                    <div class="mt-5 d-flex gap-3 justify-content-center">
+                        <a asp-action="TakeQuiz" asp-route-id="@Model.Quiz.Id" class="btn btn-outline-primary rounded-pill px-4">
+                            <i class="bi bi-arrow-counterclockwise me-1"></i> @Localizer["Retake Quiz"]
+                        </a>
+                        <a asp-action="Menu" asp-route-id="@Model.Quiz.Section?.MenuId" class="btn btn-primary rounded-pill px-4">
+                            <i class="bi bi-house-door me-1"></i> @Localizer["Back to Section"]
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+@model IEnumerable<DocumentPortal.Models.Section>
+@{
+    ViewData["Title"] = @Localizer["Manage Sections"];
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <h3>@Localizer["Add New Section"]</h3>
+        <form asp-action="AddSection" method="post" class="card p-3 mb-4 shadow-sm">
+            <div class="mb-3">
+                <label for="MenuId" class="form-label">@Localizer["Menu"]</label>
+                <select class="form-select" id="MenuId" name="MenuId" asp-items="ViewBag.Menus" required></select>
+            </div>
+            <div class="mb-3">
+                <label for="@Localizer["Title"]" class="form-label">@Localizer["Title"]</label>
+                <input type="text" class="form-control" id="@Localizer["Title"]" name="@Localizer["Title"]" required />
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="IsPrivate" name="IsPrivate" value="true" />
+                <label class="form-check-label" for="IsPrivate">@Localizer["Is Private (Requires Login)"]</label>
+            </div>
+            <button type="submit" class="btn btn-success">@Localizer["Add Section"]</button>
+        </form>
+    </div>
+    <div class="col-md-8">
+        <h3>@Localizer["Existing Sections"]</h3>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>@Localizer["Menu"]</th>
+                    <th>@Localizer["Title"]</th>
+                    <th>@Localizer["Private?"]</th>
+                    <th>@Localizer["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var section in Model)
+                {
+                    <tr>
+                        <td>@(section.Menu?.Name)</td>
+                        <td>@(section.Title)</td>
+                        <td>
+                            @if (section.IsPrivate)
+                            {
+                                <span class="badge bg-danger">@Localizer["Private"]</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-success">@Localizer["Public"]</span>
+                            }
+                        </td>
+                        <td>
+                            <a asp-action="EditSection" asp-route-id="@(section.Id)" class="btn btn-primary btn-sm me-1">@Localizer["Edit"]</a>
+                            <form asp-action="DeleteSection" method="post" style="display:inline;">
+                                <input type="hidden" name="id" value="@(section.Id)" />
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('@Localizer["Delete this section?"]"]');">@Localizer["Delete"]</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

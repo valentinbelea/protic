@@ -1,0 +1,121 @@
+@model DocumentPortal.ViewModels.TakeQuizViewModel
+@{
+    ViewData["Title"] = Model.Quiz.Title;
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow border-0 rounded-4">
+                <div class="card-header bg-primary text-white p-4 rounded-top-4">
+                    <h2 class="h3 mb-1"><i class="bi bi-ui-checks"></i> @Model.Quiz.Title</h2>
+                    @if (!string.IsNullOrEmpty(Model.Quiz.Description))
+                    {
+                        <p class="mb-0 text-white-50">@Model.Quiz.Description</p>
+                    }
+                </div>
+                <div class="card-body p-4 bg-light">
+                    @if (!Model.Quiz.Questions.Any())
+                    {
+                        <div class="alert alert-warning text-center">
+                            @Localizer["This quiz has no questions."]
+                        </div>
+                    }
+                    else
+                    {
+                        <form method="post" asp-action="SubmitQuiz" asp-route-id="@Model.Quiz.Id">
+                            @{ 
+                                int qIndex = 1; 
+                                bool isReadonly = Model.PreviousSubmission != null;
+                            }
+                            
+                            @if (isReadonly)
+                            {
+                                <div class="alert alert-info mb-4">
+                                    <h4 class="alert-heading"><i class="bi bi-info-circle me-2"></i>@Localizer["Quiz Already Taken"]</h4>
+                                    <p>@Localizer["You took this quiz on"] @Model.PreviousSubmission!.SubmissionDate.ToLocalTime().ToString("g").</p>
+                                    <hr>
+                                    <p class="mb-0"><strong>@Localizer["Your Score:"]</strong> @Model.PreviousSubmission.Score / @Model.PreviousSubmission.TotalQuestions</p>
+                                </div>
+                            }
+                            
+                            @foreach (var question in Model.Quiz.Questions)
+                            {
+                                <div class="card mb-4 border-0 shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title fw-bold">@qIndex. @question.Text</h5>
+                                        @if (!isReadonly)
+                                        {
+                                            @if (question.IsMultipleChoice)
+                                            {
+                                                <p class="text-muted small mb-3">@Localizer["Select all that apply"]</p>
+                                            }
+                                            else
+                                            {
+                                                <p class="text-muted small mb-3">@Localizer["Select one answer"]</p>
+                                            }
+                                        }
+
+                                        <div class="list-group">
+                                            @foreach (var option in question.AnswerOptions)
+                                            {
+                                                bool isSelected = false;
+                                                var bgClass = "bg-white";
+                                                
+                                                if (isReadonly)
+                                                {
+                                                    isSelected = Model.PreviousSubmission!.Answers.Any(a => a.AnswerOptionId == option.Id);
+                                                    if (option.IsCorrect && isSelected) { bgClass = "list-group-item-success"; } // Correctly selected
+                                                    if (option.IsCorrect && !isSelected) { bgClass = "list-group-item-warning"; } // Missed correct answer
+                                                    if (!option.IsCorrect && isSelected) { bgClass = "list-group-item-danger"; } // Wrongly selected
+                                                }
+
+                                                <label class="list-group-item d-flex gap-3 @bgClass" style="@(!isReadonly ? "cursor: pointer;" : "")">
+                                                    @if (question.IsMultipleChoice)
+                                                    {
+                                                        <input class="form-check-input flex-shrink-0" type="checkbox" name="Answers[@question.Id]" value="@option.Id" style="font-size: 1.375em;" @(isSelected ? "checked" : "") @(isReadonly ? "disabled" : "")>
+                                                    }
+                                                    else
+                                                    {
+                                                        <input class="form-check-input flex-shrink-0" type="radio" name="Answers[@question.Id]" value="@option.Id" style="font-size: 1.375em;" @(!isReadonly ? "required" : "") @(isSelected ? "checked" : "") @(isReadonly ? "disabled" : "")>
+                                                    }
+                                                    <span class="pt-1 form-checked-content">
+                                                        @option.Text 
+                                                        @if (isReadonly && option.IsCorrect)
+                                                        {
+                                                            <i class="bi bi-check-circle-fill text-success ms-2" title="@Localizer["Correct Answer"]"></i>
+                                                        }
+                                                        @if (isReadonly && !option.IsCorrect && isSelected)
+                                                        {
+                                                            <i class="bi bi-x-circle-fill text-danger ms-2" title="@Localizer["Incorrect Selection"]"></i>
+                                                        }
+                                                    </span>
+                                                </label>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                qIndex++;
+                            }
+
+                            @if (!isReadonly)
+                            {
+                                <div class="d-grid mt-4">
+                                    <button type="submit" class="btn btn-primary btn-lg rounded-pill shadow-sm">
+                                        <i class="bi bi-check2-circle me-2"></i> @Localizer["Submit Answers"]
+                                    </button>
+                                </div>
+                            }
+                        </form>
+                    }
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a asp-action="Menu" asp-route-id="@Model.Quiz.Section?.MenuId" class="text-decoration-none text-muted">
+                    <i class="bi bi-arrow-left me-1"></i> @Localizer["Back to Section"]
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

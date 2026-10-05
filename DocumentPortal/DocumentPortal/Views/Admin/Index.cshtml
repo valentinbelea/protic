@@ -1,0 +1,56 @@
+@{
+    ViewData["Title"] = @Localizer["Admin Dashboard"];
+}
+
+<div class="row mb-3">
+    <div class="col-8">
+        <h1>@Localizer["Admin Dashboard"]</h1>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card text-center mb-3">
+            <div class="card-body shadow-sm">
+                <h5 class="card-title">@Localizer["Menus"]</h5>
+                <p class="card-text text-muted">@Localizer["Manage the main navigation structure."]</p>
+                <a asp-action="Menus" class="btn btn-primary w-100">@Localizer["Manage"]</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center mb-3">
+            <div class="card-body shadow-sm">
+                <h5 class="card-title">@Localizer["Sections"]</h5>
+                <p class="card-text text-muted">@Localizer["Manage content sections under menus."]</p>
+                <a asp-action="Sections" class="btn btn-primary w-100">@Localizer["Manage"]</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center mb-3">
+            <div class="card-body shadow-sm">
+                <h5 class="card-title">@Localizer["Documents"]</h5>
+                <p class="card-text text-muted">@Localizer["Upload and classify documents."]</p>
+                <a asp-action="Documents" class="btn btn-primary w-100">@Localizer["Manage"]</a>
+            </div>
+        </div>
+    </div>
+        <div class="card text-center mb-3">
+            <div class="card-body shadow-sm">
+                <h5 class="card-title">@Localizer["Users"]</h5>
+                <p class="card-text text-muted">@Localizer["Manage front-end users."]</p>
+                <a asp-action="@Localizer["Users"]" class="btn btn-primary w-100">@Localizer["Manage"]</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center mb-3">
+            <div class="card-body shadow-sm">
+                <h5 class="card-title">@Localizer["Quizzes"]</h5>
+                <p class="card-text text-muted">@Localizer["Manage section quizzes."]</p>
+                <a asp-action="Quizzes" class="btn btn-primary w-100">@Localizer["Manage"]</a>
+            </div>
+        </div>
+    </div>
+</div>

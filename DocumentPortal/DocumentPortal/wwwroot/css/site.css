@@ -1,0 +1,85 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+/* Protic.ro Theme Customization */
+:root {
+  --bs-primary: #627d98; /* Muted blue-grey */
+  --bs-primary-rgb: 98, 125, 152;
+  --bs-info: #486581; /* Darker muted blue-grey for hover */
+  --bs-info-rgb: 72, 101, 129;
+  --bs-danger: #FF0000;
+  --bs-danger-rgb: 255, 0, 0;
+  --bs-body-bg: #F8F9FA;
+  --bs-font-sans-serif: Arial, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--bs-body-bg);
+  background-image: url('http://protic.ro/imagini/content-bg-left.png');
+  background-repeat: repeat;
+  background-attachment: fixed;
+  font-family: var(--bs-font-sans-serif);
+}
+
+h1, h2, h3, h4, h5, h6, .display-4, .navbar-brand {
+  font-family: Georgia, serif;
+}
+
+.text-primary {
+  color: var(--bs-info) !important;
+}
+
+.bg-primary {
+  background-color: #d9e2ec !important; /* Lighter blue-grey for backgrounds */
+}
+
+.bg-primary.text-white, .bg-primary .text-white {
+  color: #212529 !important;
+}
+
+.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--bs-info);
+  border-color: var(--bs-info);
+  color: white;
+}
+
+.btn-danger {
+  background-color: var(--bs-danger);
+  border-color: var(--bs-danger);
+  color: white;
+}

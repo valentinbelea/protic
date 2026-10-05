@@ -1,0 +1,126 @@
+@model IEnumerable<DocumentPortal.Models.Document>
+@{
+    ViewData["Title"] = @Localizer["Manage Documents"];
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <h3>@Localizer["Upload Document"]</h3>
+        <form asp-action="UploadDocument" method="post" enctype="multipart/form-data" class="card p-3 mb-4 shadow-sm">
+            <div class="mb-3">
+                <label for="SectionId" class="form-label">@Localizer["Section"]</label>
+                <select class="form-select" id="SectionId" name="SectionId" asp-items="ViewBag.Sections" required></select>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">@Localizer["Description"]</label>
+                <input type="text" class="form-control" id="description" name="description" required />
+            </div>
+            <div class="mb-3">
+                <label for="order" class="form-label">@Localizer["Order Number"]</label>
+                <input type="number" class="form-control" id="order" name="order" value="0" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label d-block">@Localizer["Document Type"]</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="docType" id="typeFile" value="file" checked onchange="toggleDocType()">
+                    <label class="form-check-label" for="typeFile">@Localizer["File Upload"]</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="docType" id="typeText" value="text" onchange="toggleDocType()">
+                    <label class="form-check-label" for="typeText">@Localizer["Text Content"]</label>
+                </div>
+            </div>
+            <div class="mb-3" id="fileInputGroup">
+                <label for="file" class="form-label">@Localizer["File (Word, Excel, PPT, Image)"]</label>
+                <input type="file" class="form-control" id="file" name="file" required />
+            </div>
+            <div class="mb-3 d-none" id="textInputGroup">
+                <label for="content" class="form-label">@Localizer["Text Content"]</label>
+                <textarea class="form-control" id="content" name="content" rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">@Localizer["Upload"]</button>
+        </form>
+    </div>
+    
+    <script>
+        function toggleDocType() {
+            var isFile = document.getElementById('typeFile').checked;
+            if (isFile) {
+                document.getElementById('fileInputGroup').classList.remove('d-none');
+                document.getElementById('textInputGroup').classList.add('d-none');
+                document.getElementById('file').setAttribute('required', 'required');
+                document.getElementById('content').removeAttribute('required');
+            } else {
+                document.getElementById('fileInputGroup').classList.add('d-none');
+                document.getElementById('textInputGroup').classList.remove('d-none');
+                document.getElementById('file').removeAttribute('required');
+                document.getElementById('content').setAttribute('required', 'required');
+            }
+        }
+    </script>
+    <div class="col-md-8">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="mb-0">@Localizer["Uploaded Documents"]</h3>
+            <form asp-action="Documents" method="get" class="d-flex">
+                <select class="form-select me-2" id="filterSectionId" name="filterSectionId" asp-items="ViewBag.Sections" onchange="this.form.submit()">
+                    <option value="">@Localizer["-- All Sections --"]</option>
+                </select>
+                <button type="submit" class="btn btn-secondary me-2">@Localizer["Filter"]</button>
+                @if (ViewBag.FilterSectionId != null)
+                {
+                    <a asp-action="Documents" class="btn btn-outline-secondary">@Localizer["Clear"]</a>
+                }
+            </form>
+        </div>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr class="d-flex">
+                    <th class="col-2">@Localizer["Section"]</th>
+                    <th class="col-4">@Localizer["File Name / Content Previz."]</th>
+                    <th class="col-2">@Localizer["Description"]</th>
+                    <th class="col-1">@Localizer["Order"]</th>
+                    <th class="col-1">@Localizer["Type"]</th>
+                    <th class="col-1">@Localizer["Date"]</th>
+                    <th class="col-1 text-center">@Localizer["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var doc in Model)
+                {
+                    <tr class="d-flex">
+                        <td class="col-2 text-truncate" title="@(doc.Section?.Menu?.Name + " - " + doc.Section?.Title)">@(doc.Section?.Menu?.Name + " - " + doc.Section?.Title)</td>
+                        <td class="col-4 text-wrap">
+                            @if (doc.FilePath != null)
+                            {
+                                <a href="/uploads/@doc.FilePath" target="_blank">@doc.FileName</a>
+                            }
+                            else
+                            {
+                                @if(!string.IsNullOrEmpty(doc.Content))
+                                {
+                                    var preview = doc.Content.Length > 100 ? doc.Content.Substring(0, 100) + "..." : doc.Content;
+                                    <span class="text-muted fst-italic">@preview</span>
+                                }
+                                else
+                                {
+                                    <span class="text-muted fst-italic">@Localizer["No Content"]</span>
+                                }
+                            }
+                        </td>
+                        <td class="col-2 text-wrap">@doc.Description</td>
+                        <td class="col-1">@doc.Order</td>
+                        <td class="col-1 text-truncate" title="@doc.ContentType">@doc.ContentType</td>
+                        <td class="col-1">@doc.UploadDate.ToString("g")</td>
+                        <td class="col-1 text-center">
+                            <a asp-action="EditDocument" asp-route-id="@doc.Id" class="btn btn-primary btn-sm mb-1 w-100">@Localizer["Edit"]</a>
+                            <form asp-action="DeleteDocument" method="post">
+                                <input type="hidden" name="id" value="@doc.Id" />
+                                <button type="submit" class="btn btn-danger btn-sm w-100" onclick="return confirm('@Localizer["Delete this document?"]"]');">@Localizer["Delete"]</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

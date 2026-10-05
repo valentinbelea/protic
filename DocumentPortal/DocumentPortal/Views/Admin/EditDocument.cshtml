@@ -1,0 +1,56 @@
+@model DocumentPortal.Models.Document
+
+@{
+    ViewData["Title"] = @Localizer["Edit Document"];
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">@Localizer["Edit Document Metadata"]</h4>
+            </div>
+            <div class="card-body">
+                @if (Model.FilePath != null)
+                {
+                    <p><strong>File Name:</strong> @Model.FileName</p>
+                }
+                else
+                {
+                    <p><strong>Document Type:</strong> Text Document</p>
+                }
+                <form asp-action="EditDocument" method="post">
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    
+                    <div class="mb-3">
+                        <label for="SectionId" class="form-label">@Localizer["Section"]</label>
+                        <select class="form-select" id="SectionId" name="sectionId" asp-items="ViewBag.Sections" required></select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="description" class="form-label">@Localizer["Description"]</label>
+                        <input type="text" class="form-control" id="description" name="description" value="@Model.Description" required />
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="order" class="form-label">@Localizer["Order Number"]</label>
+                        <input type="number" class="form-control" id="order" name="order" value="@Model.Order" required />
+                    </div>
+
+                    @if (Model.FilePath == null)
+                    {
+                        <div class="mb-3">
+                            <label for="content" class="form-label">@Localizer["Text Content"]</label>
+                            <textarea class="form-control" id="content" name="content" rows="8" required>@Model.Content</textarea>
+                        </div>
+                    }
+                    
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Documents" class="btn btn-secondary">@Localizer["Cancel"]</a>
+                        <button type="submit" class="btn btn-success">@Localizer["Save Changes"]</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Home Page" xml:space="preserve">
+    <value>Home Page</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="Learn about" xml:space="preserve">
+    <value>Learn about</value>
+  </data>
+  <data name="building Web apps with ASP.NET Core" xml:space="preserve">
+    <value>building Web apps with ASP.NET Core</value>
+  </data>
+  <data name="No sections available under this menu." xml:space="preserve">
+    <value>No sections available under this menu.</value>
+  </data>
+  <data name="Private" xml:space="preserve">
+    <value>Private</value>
+  </data>
+  <data name="This section is private and requires authentication." xml:space="preserve">
+    <value>This section is private and requires authentication.</value>
+  </data>
+  <data name="Login to View Details" xml:space="preserve">
+    <value>Login to View Details</value>
+  </data>
+  <data name="Private Access" xml:space="preserve">
+    <value>Private Access</value>
+  </data>
+  <data name="No documents have been uploaded to this section yet." xml:space="preserve">
+    <value>No documents have been uploaded to this section yet.</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Administration" xml:space="preserve">
+    <value>Administration</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="Privacy Policy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Admin Dashboard" xml:space="preserve">
+    <value>Admin Dashboard</value>
+  </data>
+  <data name="Menus" xml:space="preserve">
+    <value>Menus</value>
+  </data>
+  <data name="Manage the main navigation structure." xml:space="preserve">
+    <value>Manage the main navigation structure.</value>
+  </data>
+  <data name="Manage" xml:space="preserve">
+    <value>Manage</value>
+  </data>
+  <data name="Sections" xml:space="preserve">
+    <value>Sections</value>
+  </data>
+  <data name="Manage content sections under menus." xml:space="preserve">
+    <value>Manage content sections under menus.</value>
+  </data>
+  <data name="Documents" xml:space="preserve">
+    <value>Documents</value>
+  </data>
+  <data name="Upload and classify documents." xml:space="preserve">
+    <value>Upload and classify documents.</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="Manage front-end users." xml:space="preserve">
+    <value>Manage front-end users.</value>
+  </data>
+  <data name="Manage Documents" xml:space="preserve">
+    <value>Manage Documents</value>
+  </data>
+  <data name="Upload Document" xml:space="preserve">
+    <value>Upload Document</value>
+  </data>
+  <data name="Section" xml:space="preserve">
+    <value>Section</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Order Number" xml:space="preserve">
+    <value>Order Number</value>
+  </data>
+  <data name="Document Type" xml:space="preserve">
+    <value>Document Type</value>
+  </data>
+  <data name="File Upload" xml:space="preserve">
+    <value>File Upload</value>
+  </data>
+  <data name="Text Content" xml:space="preserve">
+    <value>Text Content</value>
+  </data>
+  <data name="File (Word, Excel, PPT, Image)" xml:space="preserve">
+    <value>File (Word, Excel, PPT, Image)</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="Uploaded Documents" xml:space="preserve">
+    <value>Uploaded Documents</value>
+  </data>
+  <data name="-- All Sections --" xml:space="preserve">
+    <value>-- All Sections --</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="File Name / Content Previz." xml:space="preserve">
+    <value>File Name / Content Previz.</value>
+  </data>
+  <data name="File Name" xml:space="preserve">
+    <value>File Name</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="Text Document" xml:space="preserve">
+    <value>Text Document</value>
+  </data>
+  <data name="No Content" xml:space="preserve">
+    <value>No Content</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Delete this document?" xml:space="preserve">
+    <value>Delete this document?</value>
+  </data>
+  <data name="Manage Menus" xml:space="preserve">
+    <value>Manage Menus</value>
+  </data>
+  <data name="Add New Menu" xml:space="preserve">
+    <value>Add New Menu</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Add Menu" xml:space="preserve">
+    <value>Add Menu</value>
+  </data>
+  <data name="Existing Menus" xml:space="preserve">
+    <value>Existing Menus</value>
+  </data>
+  <data name="Delete this menu?" xml:space="preserve">
+    <value>Delete this menu?</value>
+  </data>
+  <data name="Manage Sections" xml:space="preserve">
+    <value>Manage Sections</value>
+  </data>
+  <data name="Add New Section" xml:space="preserve">
+    <value>Add New Section</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="Is Private (Requires Login)" xml:space="preserve">
+    <value>Is Private (Requires Login)</value>
+  </data>
+  <data name="Add Section" xml:space="preserve">
+    <value>Add Section</value>
+  </data>
+  <data name="Existing Sections" xml:space="preserve">
+    <value>Existing Sections</value>
+  </data>
+  <data name="Private?" xml:space="preserve">
+    <value>Private?</value>
+  </data>
+  <data name="Public" xml:space="preserve">
+    <value>Public</value>
+  </data>
+  <data name="Delete this section?" xml:space="preserve">
+    <value>Delete this section?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Save Changes" xml:space="preserve">
+    <value>Save Changes</value>
+  </data>
+  <data name="Edit Document" xml:space="preserve">
+    <value>Edit Document</value>
+  </data>
+  <data name="Edit Document Metadata" xml:space="preserve">
+    <value>Edit Document Metadata</value>
+  </data>
+  <data name="Edit Menu" xml:space="preserve">
+    <value>Edit Menu</value>
+  </data>
+  <data name="Edit Section" xml:space="preserve">
+    <value>Edit Section</value>
+  </data>
+  <data name="Manage Users" xml:space="preserve">
+    <value>Manage Users</value>
+  </data>
+  <data name="Add New User" xml:space="preserve">
+    <value>Add New User</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="Add User" xml:space="preserve">
+    <value>Add User</value>
+  </data>
+  <data name="Existing Users" xml:space="preserve">
+    <value>Existing Users</value>
+  </data>
+  <data name="Delete this user?" xml:space="preserve">
+    <value>Delete this user?</value>
+  </data>
+  <data name="Edit User" xml:space="preserve">
+    <value>Edit User</value>
+  </data>
+</root>

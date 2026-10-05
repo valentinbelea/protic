@@ -1,0 +1,46 @@
+@model DocumentPortal.Models.Section
+@{
+    ViewData["Title"] = @Localizer["Edit Section"];
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">@Localizer["Edit Section"]</h4>
+            </div>
+            <div class="card-body">
+                <form asp-action="EditSection" method="post">
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    
+                    <div class="mb-3">
+                        <label for="MenuId" class="form-label">@Localizer["Menu"]</label>
+                        <select class="form-select" id="MenuId" name="MenuId" asp-items="ViewBag.Menus" required></select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="@Localizer["Title"]" class="form-label">@Localizer["Title"]</label>
+                        <input type="text" class="form-control" id="@Localizer["Title"]" name="@Localizer["Title"]" value="@Model.Title" required />
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        @if(Model.IsPrivate)
+                        {
+                            <input type="checkbox" class="form-check-input" id="IsPrivate" name="IsPrivate" value="true" checked />
+                        }
+                        else
+                        {
+                            <input type="checkbox" class="form-check-input" id="IsPrivate" name="IsPrivate" value="true" />
+                        }
+                        <label class="form-check-label" for="IsPrivate">@Localizer["Is Private (Requires Login)"]</label>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between mt-4">
+                        <a asp-action="Sections" class="btn btn-secondary">@Localizer["Cancel"]</a>
+                        <button type="submit" class="btn btn-success">@Localizer["Save Changes"]</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

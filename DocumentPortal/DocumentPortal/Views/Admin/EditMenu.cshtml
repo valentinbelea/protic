@@ -1,0 +1,34 @@
+@model DocumentPortal.Models.Menu
+@{
+    ViewData["Title"] = @Localizer["Edit Menu"];
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">@Localizer["Edit Menu"]</h4>
+            </div>
+            <div class="card-body">
+                <form asp-action="EditMenu" method="post">
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    
+                    <div class="mb-3">
+                        <label for="@Localizer["Name"]" class="form-label">@Localizer["Name"]</label>
+                        <input type="text" class="form-control" id="@Localizer["Name"]" name="@Localizer["Name"]" value="@Model.Name" required />
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="@Localizer["Order"]" class="form-label">@Localizer["Order"]</label>
+                        <input type="number" class="form-control" id="@Localizer["Order"]" name="@Localizer["Order"]" value="@Model.Order" required />
+                    </div>
+                    
+                    <div class="d-flex justify-content-between mt-4">
+                        <a asp-action="Menus" class="btn btn-secondary">@Localizer["Cancel"]</a>
+                        <button type="submit" class="btn btn-success">@Localizer["Save Changes"]</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

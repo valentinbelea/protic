@@ -1,0 +1,17 @@
+@model IEnumerable<DocumentPortal.Models.Menu>
+
+<ul class="navbar-nav flex-grow-1">
+    @foreach (var menu in Model)
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Menu" asp-route-id="@menu.Id">@menu.Name</a>
+        </li>
+    }
+    
+    @if (User.Identity != null && User.IsInRole("Admin"))
+    {
+        <li class="nav-item">
+            <a class="nav-link text-danger fw-bold" asp-area="" asp-controller="Admin" asp-action="Index">@Localizer["Administration"]</a>
+        </li>
+    }
+</ul>

@@ -1,0 +1,34 @@
+@model DocumentPortal.Models.Quiz
+@{
+    ViewData["Title"] = @Localizer["Edit Quiz"];
+}
+
+<h2>@Localizer["Edit Quiz"]</h2>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="EditQuiz" method="post" class="card p-4 shadow-sm">
+            <input type="hidden" asp-for="Id" />
+            <div class="mb-3">
+                <label for="SectionId" class="form-label">@Localizer["Section"]</label>
+                <select class="form-select" id="SectionId" name="SectionId" asp-items="ViewBag.Sections" required></select>
+            </div>
+            <div class="mb-3">
+                <label for="Title" class="form-label">@Localizer["Title"]</label>
+                <input type="text" class="form-control" id="Title" name="Title" value="@Model.Title" required />
+            </div>
+            <div class="mb-3">
+                <label for="Description" class="form-label">@Localizer["Description"]</label>
+                <textarea class="form-control" id="Description" name="Description">@Model.Description</textarea>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="IsActive" name="IsActive" value="true" @(Model.IsActive ? "checked" : "") />
+                <label class="form-check-label" for="IsActive">@Localizer["Is Active (Visible in front-end)"]</label>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">@Localizer["Save Changes"]</button>
+                <a asp-action="Quizzes" class="btn btn-secondary ms-2">@Localizer["Cancel"]</a>
+            </div>
+        </form>
+    </div>
+</div>

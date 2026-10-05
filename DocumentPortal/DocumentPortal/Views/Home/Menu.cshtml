@@ -1,0 +1,109 @@
+@model DocumentPortal.Models.Menu
+
+@{
+    ViewData["Title"] = Model.Name;
+    bool isAuthenticated = User.Identity != null && User.Identity.IsAuthenticated;
+}
+
+<h1 class="display-4 text-primary mb-4 border-bottom pb-2">@Model.Name</h1>
+
+@if (!Model.Sections.Any())
+{
+    <div class="alert alert-info">@Localizer["No sections available under this menu."]</div>
+}
+else
+{
+    @foreach (var section in Model.Sections)
+    {
+        if (section.IsPrivate && !isAuthenticated)
+        {
+            <div class="card mb-4 border-warning shadow-sm">
+                <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0"><i class="bi bi-lock-fill me-2"></i>@(section.Title)</h5>
+                    <span class="badge bg-dark">@Localizer["Private"]</span>
+                </div>
+                <div class="card-body text-center py-5">
+                    <p class="card-text mb-3">@Localizer["This section is private and requires authentication."]</p>
+                    <a asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Context.Request.Path" class="btn btn-outline-dark">@Localizer["Login to View Details"]</a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="card mb-4 shadow-sm border-0">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">
+                        @if (section.IsPrivate)
+                        {
+                            <i class="bi bi-shield-lock-fill me-2 text-warning"></i>
+                        }
+                        else
+                        {
+                            <i class="bi bi-folder-fill me-2"></i>
+                        }
+                        @(section.Title)
+                    </h5>
+                    @if (section.IsPrivate)
+                    {
+                        <span class="badge bg-warning text-dark">@Localizer["Private Access"]</span>
+                    }
+                </div>
+                <div class="card-body bg-light">
+                    @if (!section.Documents.Any())
+                    {
+                        <p class="text-muted mb-0 fst-italic">@Localizer["No documents have been uploaded to this section yet."]</p>
+                    }
+                    else
+                    {
+                        <ul class="list-group list-group-flush rounded shadow-sm">
+                            @foreach (var doc in section.Documents)
+                            {
+                                <li class="list-group-item">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="text-truncate me-3 fw-medium text-dark">
+                                            <i class="bi bi-file-earmark-text text-primary me-2"></i> @doc.Description
+                                        </span>
+                                        @if (doc.FilePath != null)
+                                        {
+                                            <a href="/uploads/@doc.FilePath" class="btn btn-sm btn-primary px-3 rounded-pill" target="_blank" download="@doc.FileName">
+                                                @Localizer["Download"] <i class="bi bi-download ms-1"></i>
+                                            </a>
+                                        }
+                                    </div>
+                                    @if (doc.FilePath == null && !string.IsNullOrWhiteSpace(doc.Content))
+                                    {
+                                        <div class="mt-2 text-dark fs-6" style="white-space: pre-wrap;">@doc.Content</div>
+                                    }
+                                </li>
+                            }
+                        </ul>
+                    }
+                    
+                    @if (section.Quizzes != null && section.Quizzes.Any())
+                    {
+                        <div class="mt-3 p-3 bg-white border border-info rounded">
+                            <h6 class="text-info fw-bold mb-3"><i class="bi bi-ui-checks"></i> @Localizer["Section Quizzes"]</h6>
+                            <ul class="list-group list-group-flush">
+                                @foreach (var quiz in section.Quizzes)
+                                {
+                                    <li class="list-group-item d-flex justify-content-between align-items-center bg-light">
+                                        <div>
+                                            <strong class="text-dark">@quiz.Title</strong>
+                                            @if (!string.IsNullOrEmpty(quiz.Description))
+                                            {
+                                                <p class="text-muted mb-0 small">@quiz.Description</p>
+                                            }
+                                        </div>
+                                        <a asp-controller="Home" asp-action="TakeQuiz" asp-route-id="@quiz.Id" class="btn btn-info btn-sm text-white ms-3 rounded-pill px-4 fw-bold shadow-sm">
+                                            @Localizer["Take Quiz"] <i class="bi bi-arrow-right-circle ms-1"></i>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    }
+}

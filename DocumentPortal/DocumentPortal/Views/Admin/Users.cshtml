@@ -1,0 +1,75 @@
+@model IEnumerable<DocumentPortal.Models.User>
+@{
+    ViewData["Title"] = @Localizer["Manage Users"];
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">@Localizer["Add New User"]</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="AddUser" method="post">
+                    <div class="mb-3">
+                        <label for="@Localizer["Username"]" class="form-label">@Localizer["Username"]</label>
+                        <input type="text" class="form-control" id="@Localizer["Username"]" name="@Localizer["Username"]" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="@Localizer["Password"]" class="form-label">@Localizer["Password"]</label>
+                        <input type="text" class="form-control" id="@Localizer["Password"]" name="@Localizer["Password"]" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="@Localizer["Role"]" class="form-label">@Localizer["Role"]</label>
+                        <select class="form-select" id="@Localizer["Role"]" name="@Localizer["Role"]">
+                            <option value="User">User</option>
+                            <option value="Admin">Admin</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">@Localizer["Add User"]</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">@Localizer["Existing Users"]</h5>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>@Localizer["Username"]</th>
+                            <th>@Localizer["Role"]</th>
+                            <th class="text-end">@Localizer["Actions"]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model)
+                        {
+                            <tr>
+                                <td>@user.Id</td>
+                                <td>@user.Username</td>
+                                <td>
+                                    <span class="badge @(user.Role == "Admin" ? "bg-danger" : "bg-info text-dark")">@user.Role</span>
+                                </td>
+                                <td class="text-end">
+                                    <a asp-action="EditUser" asp-route-id="@user.Id" class="btn btn-primary btn-sm me-1">@Localizer["Edit"]</a>
+                                    @if(user.Username != "admin")
+                                    {
+                                        <form asp-action="DeleteUser" method="post" style="display:inline;">
+                                            <input type="hidden" name="id" value="@user.Id" />
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Silently delete this user?');">@Localizer["Delete"]</button>
+                                        </form>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

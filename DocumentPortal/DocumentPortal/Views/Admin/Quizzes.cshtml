@@ -1,0 +1,78 @@
+@model IEnumerable<DocumentPortal.Models.Quiz>
+@{
+    ViewData["Title"] = @Localizer["Manage Quizzes"];
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <h3>@Localizer["Add New Quiz"]</h3>
+        <form asp-action="AddQuiz" method="post" class="card p-3 mb-4 shadow-sm">
+            <div class="mb-3">
+                <label for="SectionId" class="form-label">@Localizer["Section"]</label>
+                <select class="form-select" id="SectionId" name="SectionId" asp-items="ViewBag.Sections" required></select>
+            </div>
+            <div class="mb-3">
+                <label for="Title" class="form-label">@Localizer["Title"]</label>
+                <input type="text" class="form-control" id="Title" name="Title" required />
+            </div>
+            <div class="mb-3">
+                <label for="Description" class="form-label">@Localizer["Description"]</label>
+                <textarea class="form-control" id="Description" name="Description"></textarea>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="IsActive" name="IsActive" value="true" />
+                <label class="form-check-label" for="IsActive">@Localizer["Is Active (Visible in front-end)"]</label>
+            </div>
+            <button type="submit" class="btn btn-success">@Localizer["Add Quiz"]</button>
+        </form>
+    </div>
+    <div class="col-md-8">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3>@Localizer["Existing Quizzes"]</h3>
+            <form method="get" asp-action="Quizzes" class="d-flex w-50">
+                <select name="filterSectionId" class="form-select me-2" asp-items="ViewBag.Sections">
+                    <option value="">-- @Localizer["All Sections"] --</option>
+                </select>
+                <button type="submit" class="btn btn-secondary">@Localizer["Filter"]</button>
+            </form>
+        </div>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>@Localizer["Section"]</th>
+                    <th>@Localizer["Title"]</th>
+                    <th>@Localizer["Status"]</th>
+                    <th>@Localizer["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var quiz in Model)
+                {
+                    <tr>
+                        <td>@(quiz.Section?.Menu?.Name) - @(quiz.Section?.Title)</td>
+                        <td>@(quiz.Title)</td>
+                        <td>
+                            @if (quiz.IsActive)
+                            {
+                                <span class="badge bg-success">@Localizer["Active"]</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">@Localizer["Inactive"]</span>
+                            }
+                        </td>
+                        <td>
+                            <a asp-action="QuizResults" asp-route-id="@(quiz.Id)" class="btn btn-info btn-sm text-white me-1">@Localizer["Results"]</a>
+                            <a asp-action="BuildQuiz" asp-route-id="@(quiz.Id)" class="btn btn-success btn-sm me-1">@Localizer["Build"]</a>
+                            <a asp-action="EditQuiz" asp-route-id="@(quiz.Id)" class="btn btn-primary btn-sm me-1">@Localizer["Edit"]</a>
+                            <form asp-action="DeleteQuiz" method="post" style="display:inline;">
+                                <input type="hidden" name="id" value="@(quiz.Id)" />
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('@Localizer["Delete this quiz?"]');">@Localizer["Delete"]</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

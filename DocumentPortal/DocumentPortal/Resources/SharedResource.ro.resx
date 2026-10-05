@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Home Page" xml:space="preserve">
+    <value>Pagina Principală</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Bun venit</value>
+  </data>
+  <data name="Learn about" xml:space="preserve">
+    <value>Aflați despre</value>
+  </data>
+  <data name="building Web apps with ASP.NET Core" xml:space="preserve">
+    <value>construirea aplicațiilor Web cu ASP.NET Core</value>
+  </data>
+  <data name="No sections available under this menu." xml:space="preserve">
+    <value>Nu există nicio secțiune disponibilă sub acest meniu.</value>
+  </data>
+  <data name="Private" xml:space="preserve">
+    <value>Privat</value>
+  </data>
+  <data name="This section is private and requires authentication." xml:space="preserve">
+    <value>Această secțiune este privată și necesită autentificare.</value>
+  </data>
+  <data name="Login to View Details" xml:space="preserve">
+    <value>Autentificare pentru detalii</value>
+  </data>
+  <data name="Private Access" xml:space="preserve">
+    <value>Acces Privat</value>
+  </data>
+  <data name="No documents have been uploaded to this section yet." xml:space="preserve">
+    <value>Niciun document nu a fost încărcat în această secțiune încă.</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>Descarcă</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Acasă</value>
+  </data>
+  <data name="Administration" xml:space="preserve">
+    <value>Administrație</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Limbă</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Autentificare</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Deconectare</value>
+  </data>
+  <data name="Privacy Policy" xml:space="preserve">
+    <value>Politică de Confidențialitate</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Nume Utilizator</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Parolă</value>
+  </data>
+  <data name="Admin Dashboard" xml:space="preserve">
+    <value>Panou Administrare</value>
+  </data>
+  <data name="Menus" xml:space="preserve">
+    <value>Meniuri</value>
+  </data>
+  <data name="Manage the main navigation structure." xml:space="preserve">
+    <value>Gestionați structura principală de navigare.</value>
+  </data>
+  <data name="Manage" xml:space="preserve">
+    <value>Gestionează</value>
+  </data>
+  <data name="Sections" xml:space="preserve">
+    <value>Secțiuni</value>
+  </data>
+  <data name="Manage content sections under menus." xml:space="preserve">
+    <value>Gestionați secțiunile de conținut sub meniuri.</value>
+  </data>
+  <data name="Documents" xml:space="preserve">
+    <value>Documente</value>
+  </data>
+  <data name="Upload and classify documents." xml:space="preserve">
+    <value>Încărcați și clasificați documente.</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Utilizatori</value>
+  </data>
+  <data name="Manage front-end users." xml:space="preserve">
+    <value>Gestionați utilizatorii portalului public.</value>
+  </data>
+  <data name="Manage Documents" xml:space="preserve">
+    <value>Gestionare Documente</value>
+  </data>
+  <data name="Upload Document" xml:space="preserve">
+    <value>Adăugare Document</value>
+  </data>
+  <data name="Section" xml:space="preserve">
+    <value>Secțiune</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descriere</value>
+  </data>
+  <data name="Order Number" xml:space="preserve">
+    <value>Număr de Ordine</value>
+  </data>
+  <data name="Document Type" xml:space="preserve">
+    <value>Tip Document</value>
+  </data>
+  <data name="File Upload" xml:space="preserve">
+    <value>Încărcare Fișier</value>
+  </data>
+  <data name="Text Content" xml:space="preserve">
+    <value>Conținut Text</value>
+  </data>
+  <data name="File (Word, Excel, PPT, Image)" xml:space="preserve">
+    <value>Fișier (Word, Excel, Jpeg etc.)</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>Încarcă</value>
+  </data>
+  <data name="Uploaded Documents" xml:space="preserve">
+    <value>Documente Încărcate</value>
+  </data>
+  <data name="-- All Sections --" xml:space="preserve">
+    <value>-- Toate Secțiunile --</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filtrează</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Ștergeți Filtrul</value>
+  </data>
+  <data name="File Name / Content Previz." xml:space="preserve">
+    <value>Nume / Previzualizare</value>
+  </data>
+  <data name="File Name" xml:space="preserve">
+    <value>Nume Fișier</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Ordine</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tip</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Acțiuni</value>
+  </data>
+  <data name="Text Document" xml:space="preserve">
+    <value>Document Text</value>
+  </data>
+  <data name="No Content" xml:space="preserve">
+    <value>Fără Conținut</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editează</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Șterge</value>
+  </data>
+  <data name="Delete this document?" xml:space="preserve">
+    <value>Ștergeți acest document?</value>
+  </data>
+  <data name="Manage Menus" xml:space="preserve">
+    <value>Gestionare Meniuri</value>
+  </data>
+  <data name="Add New Menu" xml:space="preserve">
+    <value>Adăugare Meniu Nou</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nume</value>
+  </data>
+  <data name="Add Menu" xml:space="preserve">
+    <value>Adaugă Meniu</value>
+  </data>
+  <data name="Existing Menus" xml:space="preserve">
+    <value>Meniuri Existente</value>
+  </data>
+  <data name="Delete this menu?" xml:space="preserve">
+    <value>Ștergeți acest meniu?</value>
+  </data>
+  <data name="Manage Sections" xml:space="preserve">
+    <value>Gestionare Secțiuni</value>
+  </data>
+  <data name="Add New Section" xml:space="preserve">
+    <value>Adăugare Secțiune Nouă</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Meniu</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titlu</value>
+  </data>
+  <data name="Is Private (Requires Login)" xml:space="preserve">
+    <value>Privat (Membri)</value>
+  </data>
+  <data name="Add Section" xml:space="preserve">
+    <value>Adaugă Secțiune</value>
+  </data>
+  <data name="Existing Sections" xml:space="preserve">
+    <value>Secțiuni Existente</value>
+  </data>
+  <data name="Private?" xml:space="preserve">
+    <value>Privat?</value>
+  </data>
+  <data name="Public" xml:space="preserve">
+    <value>Public</value>
+  </data>
+  <data name="Delete this section?" xml:space="preserve">
+    <value>Ștergeți această secțiune?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Anulați</value>
+  </data>
+  <data name="Save Changes" xml:space="preserve">
+    <value>Salvați</value>
+  </data>
+  <data name="Edit Document" xml:space="preserve">
+    <value>Editare Document</value>
+  </data>
+  <data name="Edit Document Metadata" xml:space="preserve">
+    <value>Modificare Metadate Document</value>
+  </data>
+  <data name="Edit Menu" xml:space="preserve">
+    <value>Editare Meniu</value>
+  </data>
+  <data name="Edit Section" xml:space="preserve">
+    <value>Editare Secțiune</value>
+  </data>
+  <data name="Manage Users" xml:space="preserve">
+    <value>Gestionare Utilizatori</value>
+  </data>
+  <data name="Add New User" xml:space="preserve">
+    <value>Adaugă Utilizator</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Rol</value>
+  </data>
+  <data name="Add User" xml:space="preserve">
+    <value>Adaugă Utilizator</value>
+  </data>
+  <data name="Existing Users" xml:space="preserve">
+    <value>Utilizatori Existenți</value>
+  </data>
+  <data name="Delete this user?" xml:space="preserve">
+    <value>Ștergeți acest utilizator?</value>
+  </data>
+  <data name="Edit User" xml:space="preserve">
+    <value>Modificare Utilizator</value>
+  </data>
+</root>
