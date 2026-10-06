@@ -14,13 +14,15 @@
                     <input type="hidden" name="id" value="@Model.Id" />
                     
                     <div class="mb-3">
-                        <label for="@Localizer["Name"]" class="form-label">@Localizer["Name"]</label>
-                        <input type="text" class="form-control" id="@Localizer["Name"]" name="@Localizer["Name"]" value="@Model.Name" required />
+                        <label asp-for="Name" class="form-label">@Localizer["Name"]</label>
+                        <input asp-for="Name" type="text" class="form-control" required />
+                        <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
                     
                     <div class="mb-3">
-                        <label for="@Localizer["Order"]" class="form-label">@Localizer["Order"]</label>
-                        <input type="number" class="form-control" id="@Localizer["Order"]" name="@Localizer["Order"]" value="@Model.Order" required />
+                        <label asp-for="Order" class="form-label">@Localizer["Order"]</label>
+                        <input asp-for="Order" type="number" class="form-control" min="0" required />
+                        <span asp-validation-for="Order" class="text-danger"></span>
                     </div>
                     
                     <div class="d-flex justify-content-between mt-4">

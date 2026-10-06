@@ -249,4 +249,10 @@
   <data name="Edit User" xml:space="preserve">
     <value>Edit User</value>
   </data>
+  <data name="Menu name is required." xml:space="preserve">
+    <value>Menu name is required.</value>
+  </data>
+  <data name="Order must be a number greater than or equal to 0." xml:space="preserve">
+    <value>Order must be a number greater than or equal to 0.</value>
+  </data>
 </root>

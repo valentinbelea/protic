@@ -17,7 +17,7 @@ namespace DocumentPortal.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var menus = await _context.Menus.OrderBy(m => m.Order).ToListAsync();
+            var menus = await _context.Menus.OrderBy(m => m.Order).ThenBy(m => m.Id).ToListAsync();
             return View(menus);
         }
     }

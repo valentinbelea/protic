@@ -12,8 +12,8 @@
                 <select class="form-select" id="MenuId" name="MenuId" asp-items="ViewBag.Menus" required></select>
             </div>
             <div class="mb-3">
-                <label for="@Localizer["Title"]" class="form-label">@Localizer["Title"]</label>
-                <input type="text" class="form-control" id="@Localizer["Title"]" name="@Localizer["Title"]" required />
+                <label for="Title" class="form-label">@Localizer["Title"]</label>
+                <input type="text" class="form-control" id="Title" name="Title" required />
             </div>
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="IsPrivate" name="IsPrivate" value="true" />
@@ -53,7 +53,7 @@
                             <a asp-action="EditSection" asp-route-id="@(section.Id)" class="btn btn-primary btn-sm me-1">@Localizer["Edit"]</a>
                             <form asp-action="DeleteSection" method="post" style="display:inline;">
                                 <input type="hidden" name="id" value="@(section.Id)" />
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('@Localizer["Delete this section?"]"]');">@Localizer["Delete"]</button>
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('@Localizer["Delete this section?"]');">@Localizer["Delete"]</button>
                             </form>
                         </td>
                     </tr>

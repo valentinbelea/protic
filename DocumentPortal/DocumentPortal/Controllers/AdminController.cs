@@ -33,18 +33,22 @@ namespace DocumentPortal.Controllers
         // --- MENUS ---
         public async Task<IActionResult> Menus()
         {
-            var menus = await _context.Menus.OrderBy(m => m.Order).ToListAsync();
+            var menus = await _context.Menus.OrderBy(m => m.Order).ThenBy(m => m.Id).ToListAsync();
             return View(menus);
         }
 
         [HttpPost]
         public async Task<IActionResult> AddMenu(Menu menu)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Menus.Add(menu);
-                await _context.SaveChangesAsync();
+                // Re-render the list with the validation errors and the values the user entered
+                var menus = await _context.Menus.OrderBy(m => m.Order).ThenBy(m => m.Id).ToListAsync();
+                return View(nameof(Menus), menus);
             }
+
+            _context.Menus.Add(menu);
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Menus));
         }
 
@@ -73,6 +77,11 @@ namespace DocumentPortal.Controllers
         {
             var menu = await _context.Menus.FindAsync(id);
             if (menu == null) return NotFound();
+
+            if (!ModelState.IsValid)
+            {
+                return View(updatedMenu);
+            }
 
             menu.Name = updatedMenu.Name;
             menu.Order = updatedMenu.Order;

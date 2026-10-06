@@ -249,4 +249,10 @@
   <data name="Edit User" xml:space="preserve">
     <value>Modificare Utilizator</value>
   </data>
+  <data name="Menu name is required." xml:space="preserve">
+    <value>Numele meniului este obligatoriu.</value>
+  </data>
+  <data name="Order must be a number greater than or equal to 0." xml:space="preserve">
+    <value>Ordinea trebuie să fie un număr mai mare sau egal cu 0.</value>
+  </data>
 </root>

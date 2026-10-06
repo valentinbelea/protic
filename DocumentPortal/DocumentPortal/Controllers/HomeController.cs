@@ -22,7 +22,12 @@ namespace DocumentPortal.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var firstMenu = await _context.Menus.OrderBy(m => m.Order).FirstOrDefaultAsync();
+            // Land on the first menu that actually has content; fall back to the first menu at all
+            var firstMenu = await _context.Menus
+                                .Where(m => m.Sections.Any())
+                                .OrderBy(m => m.Order).ThenBy(m => m.Id)
+                                .FirstOrDefaultAsync()
+                            ?? await _context.Menus.OrderBy(m => m.Order).ThenBy(m => m.Id).FirstOrDefaultAsync();
             if (firstMenu != null)
             {
                 return RedirectToAction("Menu", new { id = firstMenu.Id });
@@ -33,9 +38,9 @@ namespace DocumentPortal.Controllers
         public async Task<IActionResult> Menu(int id)
         {
             var menu = await _context.Menus
-                .Include(m => m.Sections)
+                .Include(m => m.Sections.OrderBy(s => s.Id))
                     .ThenInclude(s => s.Documents.OrderBy(d => d.Order))
-                .Include(m => m.Sections)
+                .Include(m => m.Sections.OrderBy(s => s.Id))
                     .ThenInclude(s => s.Quizzes.Where(q => q.IsActive))
                 .FirstOrDefaultAsync(m => m.Id == id);
             

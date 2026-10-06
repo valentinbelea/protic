@@ -8,12 +8,14 @@
         <h3>@Localizer["Add New Menu"]</h3>
         <form asp-action="AddMenu" method="post" class="card p-3 mb-4 shadow-sm">
             <div class="mb-3">
-                <label for="@Localizer["Name"]" class="form-label">@Localizer["Name"]</label>
-                <input type="text" class="form-control" id="@Localizer["Name"]" name="@Localizer["Name"]" required />
+                <label for="Name" class="form-label">@Localizer["Name"]</label>
+                <input type="text" class="form-control" id="Name" name="Name" value="@(ViewData.ModelState["Name"]?.AttemptedValue)" required />
+                @Html.ValidationMessage("Name", null, new { @class = "text-danger" })
             </div>
             <div class="mb-3">
-                <label for="@Localizer["Order"]" class="form-label">@Localizer["Order"]</label>
-                <input type="number" class="form-control" id="@Localizer["Order"]" name="@Localizer["Order"]" value="0" required />
+                <label for="Order" class="form-label">@Localizer["Order"]</label>
+                <input type="number" class="form-control" id="Order" name="Order" value="@(ViewData.ModelState["Order"]?.AttemptedValue ?? "0")" min="0" required />
+                @Html.ValidationMessage("Order", null, new { @class = "text-danger" })
             </div>
             <button type="submit" class="btn btn-success">@Localizer["Add Menu"]</button>
         </form>
@@ -38,7 +40,7 @@
                             <a asp-action="EditMenu" asp-route-id="@menu.Id" class="btn btn-primary btn-sm me-1">@Localizer["Edit"]</a>
                             <form asp-action="DeleteMenu" method="post" style="display:inline;">
                                 <input type="hidden" name="id" value="@menu.Id" />
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('@Localizer["Delete this menu?"]"]');">@Localizer["Delete"]</button>
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('@Localizer["Delete this menu?"]');">@Localizer["Delete"]</button>
                             </form>
                         </td>
                     </tr>

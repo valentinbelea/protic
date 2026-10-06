@@ -12,16 +12,16 @@
             <div class="card-body">
                 <form asp-action="AddUser" method="post">
                     <div class="mb-3">
-                        <label for="@Localizer["Username"]" class="form-label">@Localizer["Username"]</label>
-                        <input type="text" class="form-control" id="@Localizer["Username"]" name="@Localizer["Username"]" required />
+                        <label for="Username" class="form-label">@Localizer["Username"]</label>
+                        <input type="text" class="form-control" id="Username" name="Username" required />
                     </div>
                     <div class="mb-3">
-                        <label for="@Localizer["Password"]" class="form-label">@Localizer["Password"]</label>
-                        <input type="text" class="form-control" id="@Localizer["Password"]" name="@Localizer["Password"]" required />
+                        <label for="Password" class="form-label">@Localizer["Password"]</label>
+                        <input type="text" class="form-control" id="Password" name="Password" required />
                     </div>
                     <div class="mb-3">
-                        <label for="@Localizer["Role"]" class="form-label">@Localizer["Role"]</label>
-                        <select class="form-select" id="@Localizer["Role"]" name="@Localizer["Role"]">
+                        <label for="Role" class="form-label">@Localizer["Role"]</label>
+                        <select class="form-select" id="Role" name="Role">
                             <option value="User">User</option>
                             <option value="Admin">Admin</option>
                         </select>

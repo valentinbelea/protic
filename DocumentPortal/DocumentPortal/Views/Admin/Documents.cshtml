@@ -115,7 +115,7 @@
                             <a asp-action="EditDocument" asp-route-id="@doc.Id" class="btn btn-primary btn-sm mb-1 w-100">@Localizer["Edit"]</a>
                             <form asp-action="DeleteDocument" method="post">
                                 <input type="hidden" name="id" value="@doc.Id" />
-                                <button type="submit" class="btn btn-danger btn-sm w-100" onclick="return confirm('@Localizer["Delete this document?"]"]');">@Localizer["Delete"]</button>
+                                <button type="submit" class="btn btn-danger btn-sm w-100" onclick="return confirm('@Localizer["Delete this document?"]');">@Localizer["Delete"]</button>
                             </form>
                         </td>
                     </tr>
