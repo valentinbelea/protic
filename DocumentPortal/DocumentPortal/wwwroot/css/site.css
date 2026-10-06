@@ -1,5 +1,47 @@
+/* =========================================================================
+   Protic – "Caiet de mate" theme
+   Grid paper, ink-blue text, red margin line, handwritten notes.
+   Bootstrap stays loaded (admin + quiz pages use it); it is retuned below.
+   ========================================================================= */
+
+:root {
+  --pt-paper: #FCFBF7;
+  --pt-grid: rgba(35, 70, 168, .09);
+  --pt-ink: #1F2A5A;
+  --pt-ink-muted: #4A5072;
+  --pt-accent: #2346A8;
+  --pt-accent-dark: #16306F;
+  --pt-pen-red: #E25B4B;
+  --pt-margin: #E8A39A;
+  --pt-note: #C2410C;
+  --pt-line: #E3E6F1;
+  --pt-dash: #B9C0DA;
+  --pt-mark-yellow: #FFE680;
+  --pt-mark-blue: #D6E4FF;
+  --pt-mark-green: #E3F2E1;
+  --pt-quiz: #FFF7D1;
+  --pt-locked: #F4F5FA;
+  --pt-font: 'Lexend', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --pt-font-hand: 'Caveat', cursive;
+
+  /* Bootstrap retune */
+  --bs-body-font-family: var(--pt-font);
+  --bs-font-sans-serif: var(--pt-font);
+  --bs-body-color: var(--pt-ink);
+  --bs-body-bg: var(--pt-paper);
+  --bs-secondary-color: var(--pt-ink-muted);
+  --bs-border-color: var(--pt-dash);
+  --bs-primary: var(--pt-accent);
+  --bs-primary-rgb: 35, 70, 168;
+  --bs-link-color: var(--pt-accent);
+  --bs-link-color-rgb: 35, 70, 168;
+  --bs-link-hover-color: var(--pt-accent-dark);
+  --bs-link-hover-color-rgb: 22, 48, 111;
+  --bs-border-radius: 6px;
+}
+
 html {
-  font-size: 14px;
+  font-size: 15px;
 }
 
 @media (min-width: 768px) {
@@ -8,78 +50,589 @@ html {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
 body {
-  margin-bottom: 60px;
+  font-family: var(--pt-font);
+  color: var(--pt-ink);
+  background-color: var(--pt-paper);
+  background-image:
+    linear-gradient(var(--pt-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--pt-grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  line-height: 1.5;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
-}
-
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
-}
-
-/* Protic.ro Theme Customization */
-:root {
-  --bs-primary: #627d98; /* Muted blue-grey */
-  --bs-primary-rgb: 98, 125, 152;
-  --bs-info: #486581; /* Darker muted blue-grey for hover */
-  --bs-info-rgb: 72, 101, 129;
-  --bs-danger: #FF0000;
-  --bs-danger-rgb: 255, 0, 0;
-  --bs-body-bg: #F8F9FA;
-  --bs-font-sans-serif: Arial, Verdana, sans-serif;
-}
-
-body {
-  background-color: var(--bs-body-bg);
-  background-image: url('http://protic.ro/imagini/content-bg-left.png');
-  background-repeat: repeat;
-  background-attachment: fixed;
-  font-family: var(--bs-font-sans-serif);
-}
-
-h1, h2, h3, h4, h5, h6, .display-4, .navbar-brand {
-  font-family: Georgia, serif;
+h1, h2, h3, h4, h5, h6, .display-4 {
+  font-family: var(--pt-font);
+  font-weight: 700;
+  color: var(--pt-ink);
+  letter-spacing: -0.02em;
 }
 
 .text-primary {
-  color: var(--bs-info) !important;
+  color: var(--pt-ink) !important;
+}
+
+.text-muted {
+  color: var(--pt-ink-muted) !important;
+}
+
+:focus-visible {
+  outline: 3px solid var(--pt-accent);
+  outline-offset: 2px;
+}
+
+.btn:focus-visible, .form-control:focus, .form-select:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.25rem rgba(35, 70, 168, .25);
+}
+
+/* ---------- Header ---------- */
+
+.pt-header {
+  background: var(--pt-paper);
+  border-bottom: 2px solid var(--pt-ink);
+}
+
+.pt-header__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 32px;
+}
+
+.pt-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--pt-ink);
+  text-decoration: none;
+}
+
+.pt-brand:hover {
+  color: var(--pt-ink);
+}
+
+.pt-brand__name {
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.pt-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 22px;
+  flex: 1 1 440px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pt-nav__link {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--pt-ink-muted);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+}
+
+.pt-nav__link:hover {
+  color: var(--pt-ink);
+  border-bottom-color: var(--pt-dash);
+}
+
+.pt-nav__link.is-active {
+  color: var(--pt-ink);
+  font-weight: 700;
+  border-bottom-color: var(--pt-pen-red);
+}
+
+.pt-nav__link--admin {
+  color: var(--pt-note);
+  font-weight: 700;
+}
+
+.pt-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ---------- Buttons ---------- */
+
+.pt-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  font-family: var(--pt-font);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.2;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1.5px solid var(--pt-ink);
+  transition: transform .08s ease, box-shadow .08s ease;
+}
+
+.pt-btn--primary {
+  color: #FFFFFF;
+  background: var(--pt-accent);
+  box-shadow: 3px 3px 0 var(--pt-ink);
+}
+
+.pt-btn--primary:hover {
+  color: #FFFFFF;
+  background: var(--pt-accent-dark);
+}
+
+.pt-btn--primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--pt-ink);
+}
+
+.pt-btn--outline {
+  color: var(--pt-ink);
+  background: #FFFFFF;
+}
+
+.pt-btn--outline:hover {
+  color: var(--pt-ink);
+  background: var(--pt-locked);
+}
+
+.pt-btn--ghost {
+  color: var(--pt-ink);
+  background: transparent;
+}
+
+.pt-btn--ghost:hover,
+.pt-btn--ghost.show {
+  color: var(--pt-ink);
+  background: var(--pt-locked);
+}
+
+/* ---------- Page ---------- */
+
+.pt-page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 40px 24px 64px;
+}
+
+.pt-margin {
+  border-left: 2px solid var(--pt-margin);
+  padding-left: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media (max-width: 575.98px) {
+  .pt-margin {
+    padding-left: 16px;
+  }
+}
+
+.pt-hand {
+  font-family: var(--pt-font-hand);
+  font-weight: 700;
+  color: var(--pt-note);
+}
+
+.pt-title {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pt-title__eyebrow {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.pt-title h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -1.2px;
+}
+
+/* ---------- Section cards ("notebook pages") ---------- */
+
+.pt-sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  align-items: flex-start;
+}
+
+.pt-card {
+  flex: 1 1 340px;
+  min-width: 0;
+  background: #FFFFFF;
+  border: 1.5px solid var(--pt-ink);
+  border-radius: 6px;
+  box-shadow: 5px 5px 0 var(--pt-ink);
+}
+
+.pt-card--locked {
+  background: var(--pt-locked);
+  border-style: dashed;
+  box-shadow: none;
+}
+
+.pt-card__head {
+  padding: 16px 22px;
+  border-bottom: 1.5px dashed var(--pt-dash);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.pt-card--locked .pt-card__head {
+  border-bottom: 0;
+}
+
+.pt-card__title {
+  margin: 0;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pt-card__body {
+  padding: 8px 22px 22px;
+}
+
+.pt-card__empty {
+  margin: 12px 0 0;
+  color: var(--pt-ink-muted);
+  font-family: var(--pt-font-hand);
+  font-size: 1.35rem;
+}
+
+.pt-badge {
+  font-size: .8rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--pt-ink);
+  color: #FFFFFF;
+}
+
+.pt-badge--soft {
+  background: var(--pt-mark-yellow);
+  color: var(--pt-ink);
+}
+
+/* ---------- Document rows ---------- */
+
+.pt-docs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pt-doc {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--pt-line);
+}
+
+.pt-doc:last-child {
+  border-bottom: 0;
+}
+
+.pt-doc__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pt-doc__name {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.pt-doc__content {
+  margin: 4px 0 4px 64px;
+  color: var(--pt-ink-muted);
+  font-size: .95rem;
+  white-space: pre-wrap;
+}
+
+.pt-tag {
+  flex: none;
+  width: 52px;
+  padding: 3px 0;
+  text-align: center;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .5px;
+  border-radius: 4px;
+  color: var(--pt-ink);
+  background: var(--pt-mark-yellow);
+}
+
+.pt-tag--blue { background: var(--pt-mark-blue); }
+.pt-tag--green { background: var(--pt-mark-green); }
+
+.pt-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 8px;
+  font-weight: 500;
+  color: var(--pt-accent);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.pt-link:hover {
+  color: var(--pt-accent-dark);
+  text-decoration: underline;
+}
+
+/* ---------- Quiz box ---------- */
+
+.pt-quiz {
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: var(--pt-quiz);
+  border: 1.5px dashed var(--pt-ink);
+  border-radius: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.pt-quiz + .pt-quiz {
+  margin-top: 12px;
+}
+
+.pt-quiz__info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.pt-quiz__title {
+  font-weight: 700;
+}
+
+.pt-quiz__desc {
+  font-size: .9rem;
+  color: var(--pt-ink-muted);
+}
+
+/* ---------- Notice (empty states) ---------- */
+
+.pt-notice {
+  padding: 18px 22px;
+  background: #FFFFFF;
+  border: 1.5px dashed var(--pt-ink);
+  border-radius: 6px;
+  color: var(--pt-ink-muted);
+}
+
+/* ---------- Footer ---------- */
+
+.pt-footer {
+  border-top: 2px solid var(--pt-ink);
+  background: var(--pt-paper);
+}
+
+.pt-footer__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 20px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: .9rem;
+  color: var(--pt-ink-muted);
+}
+
+/* =========================================================================
+   Bootstrap components in the notebook style (admin, quiz, login pages)
+   ========================================================================= */
+
+.card {
+  border: 1.5px solid var(--pt-ink);
+  border-radius: 6px;
+  box-shadow: 4px 4px 0 var(--pt-ink) !important;
+  background: #FFFFFF;
+}
+
+.card.border-0 {
+  border: 1.5px solid var(--pt-ink) !important;
+}
+
+.card-header {
+  border-bottom: 1.5px dashed var(--pt-dash);
+  background: #FFFFFF;
 }
 
 .bg-primary {
-  background-color: #d9e2ec !important; /* Lighter blue-grey for backgrounds */
+  background-color: var(--pt-mark-blue) !important;
 }
 
-.bg-primary.text-white, .bg-primary .text-white {
-  color: #212529 !important;
+.bg-primary.text-white, .bg-primary .text-white,
+.bg-primary .text-white-50 {
+  color: var(--pt-ink) !important;
 }
 
-.btn-primary {
-  background-color: var(--bs-primary);
-  border-color: var(--bs-primary);
-  color: white;
+.bg-light {
+  background-color: #FFFFFF !important;
 }
 
-.btn-primary:hover {
-  background-color: var(--bs-info);
-  border-color: var(--bs-info);
-  color: white;
+.btn {
+  font-family: var(--pt-font);
+  font-weight: 500;
+  border-radius: 6px;
+  border-width: 1.5px;
+}
+
+.btn-primary, .btn-success, .btn-info {
+  color: #FFFFFF;
+  background-color: var(--pt-accent);
+  border-color: var(--pt-ink);
+}
+
+.btn-primary:hover, .btn-success:hover, .btn-info:hover,
+.btn-primary:active, .btn-success:active, .btn-info:active {
+  color: #FFFFFF !important;
+  background-color: var(--pt-accent-dark) !important;
+  border-color: var(--pt-ink) !important;
+}
+
+.btn-success {
+  background-color: #1F7A5A;
+}
+
+.btn-secondary, .btn-outline-dark, .btn-outline-secondary {
+  color: var(--pt-ink);
+  background-color: #FFFFFF;
+  border-color: var(--pt-ink);
+}
+
+.btn-secondary:hover, .btn-outline-dark:hover, .btn-outline-secondary:hover {
+  color: var(--pt-ink);
+  background-color: var(--pt-locked);
+  border-color: var(--pt-ink);
 }
 
 .btn-danger {
-  background-color: var(--bs-danger);
-  border-color: var(--bs-danger);
-  color: white;
+  color: #FFFFFF;
+  background-color: #B42318;
+  border-color: #7A1A12;
 }
+
+.btn-danger:hover {
+  color: #FFFFFF;
+  background-color: #8F1C13;
+  border-color: #7A1A12;
+}
+
+.form-control, .form-select {
+  border: 1.5px solid var(--pt-dash);
+  border-radius: 6px;
+  color: var(--pt-ink);
+  background-color: #FFFFFF;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--pt-accent);
+}
+
+.form-check-input:checked {
+  background-color: var(--pt-accent);
+  border-color: var(--pt-accent);
+}
+
+.form-label {
+  font-weight: 500;
+}
+
+.table {
+  --bs-table-bg: #FFFFFF;
+  --bs-table-striped-bg: #F7F8FC;
+  --bs-table-color: var(--pt-ink);
+  --bs-table-striped-color: var(--pt-ink);
+  border-color: var(--pt-line);
+}
+
+.table > thead th {
+  border-bottom: 2px solid var(--pt-ink);
+}
+
+.alert {
+  border: 1.5px dashed var(--pt-ink);
+  border-radius: 6px;
+  color: var(--pt-ink);
+}
+
+.alert-info {
+  background-color: #FFFFFF;
+}
+
+.alert-warning {
+  background-color: var(--pt-quiz);
+}
+
+.alert-success {
+  background-color: var(--pt-mark-green);
+}
+
+.alert-danger {
+  background-color: #FDECEA;
+}
+
+.list-group-item {
+  border-color: var(--pt-line);
+  color: var(--pt-ink);
+}
+
+.dropdown-menu {
+  border: 1.5px solid var(--pt-ink);
+  border-radius: 6px;
+  box-shadow: 4px 4px 0 var(--pt-ink);
+  font-family: var(--pt-font);
+}
+
+.dropdown-item {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  color: var(--pt-ink);
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  background-color: var(--pt-locked);
+  color: var(--pt-ink);
+}
+
+.badge.bg-success { background-color: #1F7A5A !important; }
+.badge.bg-danger { background-color: #B42318 !important; }
+.badge.bg-info { background-color: var(--pt-mark-blue) !important; color: var(--pt-ink) !important; }
+.badge.bg-warning { background-color: var(--pt-mark-yellow) !important; color: var(--pt-ink) !important; }

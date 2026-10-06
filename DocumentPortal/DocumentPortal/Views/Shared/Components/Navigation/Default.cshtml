@@ -1,17 +1,21 @@
 @model IEnumerable<DocumentPortal.Models.Menu>
+@{
+    var routeValues = ViewContext.RouteData.Values;
+    bool onMenuPage = string.Equals(routeValues["controller"]?.ToString(), "Home", StringComparison.OrdinalIgnoreCase)
+                      && string.Equals(routeValues["action"]?.ToString(), "Menu", StringComparison.OrdinalIgnoreCase);
+    var currentId = onMenuPage ? routeValues["id"]?.ToString() : null;
+}
 
-<ul class="navbar-nav flex-grow-1">
+<nav class="pt-nav" aria-label="@Localizer["Main menu"]">
     @foreach (var menu in Model)
     {
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Menu" asp-route-id="@menu.Id">@menu.Name</a>
-        </li>
+        bool isActive = currentId == menu.Id.ToString();
+        <a class="pt-nav__link @(isActive ? "is-active" : null)" aria-current="@(isActive ? "page" : null)"
+           asp-area="" asp-controller="Home" asp-action="Menu" asp-route-id="@menu.Id">@menu.Name</a>
     }
-    
+
     @if (User.Identity != null && User.IsInRole("Admin"))
     {
-        <li class="nav-item">
-            <a class="nav-link text-danger fw-bold" asp-area="" asp-controller="Admin" asp-action="Index">@Localizer["Administration"]</a>
-        </li>
+        <a class="pt-nav__link pt-nav__link--admin" asp-area="" asp-controller="Admin" asp-action="Index">@Localizer["Administration"]</a>
     }
-</ul>
+</nav>

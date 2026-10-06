@@ -255,4 +255,16 @@
   <data name="Order must be a number greater than or equal to 0." xml:space="preserve">
     <value>Ordinea trebuie să fie un număr mai mare sau egal cu 0.</value>
   </data>
+  <data name="current chapter" xml:space="preserve">
+    <value>capitolul curent</value>
+  </data>
+  <data name="Main menu" xml:space="preserve">
+    <value>Meniu principal</value>
+  </data>
+  <data name="Section Quizzes" xml:space="preserve">
+    <value>Teste</value>
+  </data>
+  <data name="Take Quiz" xml:space="preserve">
+    <value>Începe testul</value>
+  </data>
 </root>

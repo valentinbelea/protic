@@ -255,4 +255,16 @@
   <data name="Order must be a number greater than or equal to 0." xml:space="preserve">
     <value>Order must be a number greater than or equal to 0.</value>
   </data>
+  <data name="current chapter" xml:space="preserve">
+    <value>current chapter</value>
+  </data>
+  <data name="Main menu" xml:space="preserve">
+    <value>Main menu</value>
+  </data>
+  <data name="Section Quizzes" xml:space="preserve">
+    <value>Section Quizzes</value>
+  </data>
+  <data name="Take Quiz" xml:space="preserve">
+    <value>Take Quiz</value>
+  </data>
 </root>
